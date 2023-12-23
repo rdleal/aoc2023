@@ -1,7 +1,7 @@
 use std::process;
 use std::env;
 
-use day1::Config;
+use aoc::Config;
 
 fn main() {
     let config = Config::build(env::args()).unwrap_or_else(|err| {

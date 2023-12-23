@@ -1,23 +1,7 @@
 use std::error::Error;
 use std::fs;
 
-pub struct Config {
-    pub file_path: String,
-}
-
-impl Config {
-    pub fn build(
-        mut args: impl Iterator<Item = String>,
-    ) -> Result<Config, &'static str> {
-        args.next();
-            
-        let file_path = match args.next() {
-            Some(arg) => arg,
-            None => return Err("Didn't get a file path"),
-        };
-        Ok(Config { file_path })
-    }
-}
+use aoc::Config;
 
 pub fn run(config: Config) -> Result<(Option<u32>, Option<u32>), Box<dyn Error>> {
     let calibrations = fs::read_to_string(config.file_path)?;
